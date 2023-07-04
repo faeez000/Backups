@@ -1,0 +1,400 @@
+/* dashboard builder */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.dashboard-builder-header {
+    height: 30px;
+    background-color: white;
+    padding: 5px 0px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--outer-border-color);
+    padding: 10px 0px 0px 0px;
+    padding-bottom: 10px;
+}
+
+.dashboard-back-icon-container {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+    font-size: 14px;
+}
+#update-order > :nth-child(n):hover,
+#preview > :nth-child(n):hover,
+#report > :nth-child(n):hover,
+#back-to-edit > :nth-child(n):hover {
+    color: #8d61f3;
+    transition: all 0.4s;
+}
+
+.dashboard-builder-name-header {
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #515151;
+    font-size: 25px;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-left: 57px;
+}
+
+.dashboard-builder-button-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 15px;
+    margin-right: 10px;
+    margin-bottom: 21px !important;
+    /* background-color: #9286af; */
+    width: 12rem;
+    color: #fff;
+}
+#back-button:hover {
+    text-decoration: none;
+    color: #515151;
+}
+#back-button {
+    text-decoration: none;
+    color: #515151;
+}
+
+.form-field-container {
+    border-right: 1px solid var(--outer-border-color);
+    width: 100%;
+    padding: 10px 6px !important;
+    height: calc(100vh - 30px) !important;
+    top: 0;
+    max-height: 100vh;
+    overflow: auto;
+    top: 120px;
+    position: sticky;
+}
+
+.form-fields {
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    top: 0px;
+    position: sticky;
+}
+
+.form-field {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid white;
+    border-bottom: 1px solid #5e58581a;
+    font-size: 0.9rem;
+    padding: 8px;
+    margin-bottom: 6px;
+    text-align: left;
+    cursor: move;
+    font-weight: 500;
+    transition: all 0.2s ease-in;
+}
+
+.form-field > span {
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+}
+
+.form-field:hover {
+    /* border: 1px solid rgba(128, 128, 128, 0.438); */
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+        rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+        rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    transition: all 0.3s;
+}
+
+.form-field > .bi-grip-vertical {
+    font-size: 22px;
+    margin-bottom: 4px;
+    color: var(--icon-color);
+}
+
+/* right container dashboard builder */
+
+.form-builder-container {
+    width: 100vw !important;
+    background-color: rgb(255 255 255 / 86%);
+    height: calc(100vh - 30px) !important;
+    padding: 20px 110px !important;
+    padding-bottom: 100px !important;
+    overflow: auto;
+}
+
+.form-actions-container {
+    padding: 20px 10px !important;
+}
+
+/* .form-actions-container .update-order {
+  display: none;
+  top: 80px !important;
+  position: sticky !important;
+  background-color: #fff;
+  border: 1px solid var(--table-border);
+  font-family: inherit;
+} */
+.form-actions-container .update-order:hover {
+    background-color: var(--table -border);
+    background-color: #8d61f3;
+}
+
+.main-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-bottom: 50px;
+    border: 1px solid var(--table-border);
+}
+
+.icon {
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid white;
+    padding: 5px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    height: 75px !important;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    padding: 10px 6px;
+    overflow: hidden;
+    overflow-x: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 25px 0px;
+}
+
+.wrapper:hover {
+    border: 2px solid var(--builder-component-color);
+    /* box-shadow: #e6e6e691 0px 5px 18px; */
+    /* transition: all 0.3s ease-in-out ; */
+}
+
+.wrapper > .bi-grip-vertical {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.wrapper .bi-trash-fill {
+    margin-bottom: 8px;
+    color: var(--icon-color);
+    font-size: 25px;
+}
+.wrapper .bi-trash-fill:hover {
+    color: var(--icon-hover-color);
+    font-size: 25px;
+    transition: all 0.2s;
+}
+
+.wrapper .help-icon {
+    margin-left: 5px;
+}
+
+.section {
+    border: 1px solid #bbb8b8a2;
+    cursor: pointer;
+    background-color: rgba(182, 182, 182, 0.115);
+    margin: 0px !important;
+    color: black !important;
+}
+
+.section:hover {
+    background-color: #8d61f3;
+    color: white;
+    border: 1px solid rgb(209, 209, 209);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.section:hover p {
+    display: none;
+}
+.section:hover::after {
+    content: "Click to Edit";
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.section-name {
+    color: rgb(0, 0, 0);
+    width: 100%;
+    text-align: center !important;
+}
+.section-modal {
+    padding: 0px !important;
+    min-height: 75vh !important;
+    overflow: hidden !important;
+}
+.field-action {
+    padding: 5px 0px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.border {
+    border: 1px solid var(--table-border) !important;
+}
+
+.label-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 5px;
+}
+
+.element-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input-options {
+    margin-bottom: 0px;
+}
+
+#checkbox-main-element {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+label {
+    margin: 0px;
+}
+
+.form-group label {
+    width: 100% !important;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.section input {
+    margin-left: 5px;
+    max-width: 5.5rem;
+}
+
+.section .to {
+    margin-left: 5px;
+}
+
+@media only screen and (max-width: 1076px) {
+    .form-builder-container {
+        padding: 20px 30px !important;
+    }
+    .dashboard-builder-button-header > #back-to-edit {
+        width: 11rem;
+    }
+}
+
+@media only screen and (max-width: 840px) {
+    .form-builder-container {
+        padding: 20px 10px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* header and button css */
+    .dashboard-builder-header {
+        flex-direction: column;
+        height: 90px;
+        justify-content: center;
+    }
+
+    .dashboard-back-container {
+        width: 100%;
+        text-align: left;
+    }
+    .dashboard-builder-name-header {
+        font-size: 1.4em;
+        width: 100%;
+        text-align: center;
+        margin-left: 0px;
+        position: relative;
+        color: #5c5c5c;
+    }
+
+    .dashboard-builder-button-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0px 5px;
+        padding: 0px 10px;
+    }
+
+    .dashboard-builder-button-header > #back-to-edit {
+        width: fit-content;
+    }
+
+    /* builder left section */
+    .form-field-container {
+        padding: 14px 6px !important;
+        height: 20rem !important;
+        position: static;
+        background-color: white;
+    }
+
+    .form-field {
+        border: 1px solid var(--border-color);
+    }
+
+    /* builder right scetion  */
+    .form-builder-container {
+        padding: 20px 15px !important;
+        height: auto !important;
+    }
+
+    /* cards inside dashboard builder row */
+
+    .section-name {
+        color: rgb(0, 0, 0);
+        width: 100%;
+        text-align: center !important;
+    }
+    .section-modal {
+        padding: 0px !important;
+        min-height: 75vh !important;
+        overflow: hidden !important;
+    }
+    .field-action {
+        padding: 5px 0px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .section-name {
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 314px) {
+    .dashboard-builder-header {
+        margin-top: 30px;
+    }
+}

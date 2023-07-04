@@ -1,0 +1,30 @@
+.Modal .ant-modal-header {
+    border-radius: 20px 20px 0 0;
+    border:1px solid rgb(167 139 250);
+    /* background: linear-gradient(to bottom, #ccccff -20%, #ffffff 100%); */
+}
+
+
+
+.Modal .ant-modal-content {
+    border-radius: 20px;
+    min-height: 500px;
+    /*   width:700px; */
+    overflow: auto;
+    border:1px solid rgb(139 92 246);
+    border-top: none;
+    /* background: linear-gradient(to bottom, #ccccff -20%, #ffffff 100%); */
+}
+
+.Modal .ant-modal-footer{
+    display: none;
+}
+
+.cardDiv {
+    display: flex;
+    overflow: auto;
+    overflow-y: hidden;
+    /*   margin-top:2%; */
+    /*   flex-wrap: wrap; */
+    /*   justify-content: flex-start; */
+}

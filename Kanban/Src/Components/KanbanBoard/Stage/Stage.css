@@ -1,0 +1,8 @@
+.stage_top_moreOption {
+    opacity: 0;
+    transition: 200ms;
+}
+
+.stage:hover .stage_top_moreOption {
+    opacity: 1;
+}

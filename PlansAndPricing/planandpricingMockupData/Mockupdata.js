@@ -1,0 +1,81 @@
+
+const monthlyData = [
+    {
+        sts: "14 Days free period",
+        plan: "free-trial",
+        price: "0",
+        entries: "1000 Entries/User",
+        pages: "7 Forms/Pages",
+        organization: "1 Organizations",
+        users: "1 User",
+        activated: false,
+    },
+    {
+        plan: "monthly-plus",
+        price: "1199",
+        entries: "40000 Entries/User",
+        pages: "20 Forms/Pages",
+        organization: "5 Organizations",
+        users: "2 Users",
+        activated: false,
+    },
+    {
+        plan: "monthly-gold",
+        price: "4999",
+        entries: "100000 Entries/User",
+        pages: "50 Forms/Pages",
+        organization: "10 Organizations",
+        users: "10 Users",
+        activated: false,
+    },
+    {
+        plan: "monthly-premium",
+        price: "8499",
+        entries: "200000 Entries/User",
+        pages: "80 Forms/Pages",
+        organization: "20 Organizations",
+        users: "20 Users",
+        activated: false,
+    },
+];
+const yearlyData = [
+    {
+        sts: "14 Days free period",
+        plan: "free-trial",
+        price: "0",
+        entries: "1000 Entries/User",
+        pages: "7 Forms/Pages",
+        organization: "2 Organizations",
+        users: "1 user",
+        activated: false,
+    },
+    {
+        plan: "yearly-plus",
+        price: "11990",
+        entries: "40000 Entries/User",
+        pages: "20 Forms/Pages",
+        organization: "5 Organizations",
+        users: "2 Users",
+        activated: false,
+    },
+    {
+        plan: "yearly-gold",
+        price: "49990",
+        entries: "100000 Entries/User",
+        pages: "50 Forms/Pages",
+        organization: "10 Organizations",
+        users: "10 Users",
+        activated: false,
+    },
+    {
+        plan: "yearly-premium",
+        price: "84990",
+        entries: "200000 Entries/User",
+        pages: "80 Forms/Pages",
+        organization: "20 Organizations",
+        users: "20 Users",
+        activated: false,
+    },
+];
+
+export{monthlyData, yearlyData}

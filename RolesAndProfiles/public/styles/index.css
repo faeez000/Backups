@@ -1,0 +1,10 @@
+@import "./c-card.css";
+@import "./component.css";
+@import "./variables.css";
+@import "./common.css";
+@import "./form.css";
+@import "./model.css";
+
+* {
+    font-family: "Roboto", sans-serif;
+}

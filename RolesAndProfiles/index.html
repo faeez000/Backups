@@ -1,0 +1,1098 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Roles And Profiles</title>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <link rel="icon" type="image/x-icon" href="/static/roles-and-profiles/public/asset/logo.ico">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+
+    <link href="/static/roles-and-profiles/public/styles/snackbar.min.css" rel="stylesheet" />
+    <link href="/static/roles-and-profiles/public/styles/index.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body style="display: none;">
+    <!-- Static navbar -->
+
+    <nav class="navbar navbar-light fixed-top border-bottom px-5 py-0" style="height: 3rem; background-color: white;">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="/features" style="width: 90px;">
+                <img src="https://cleverlywork.com/wp-content/uploads/2021/02/14cw.svg"
+                    style="width: 100%; min-width: 50px; object-fit: contain;" />
+            </a>
+
+            <div class="">
+                <ul class="list-unstyled nav-links d-flex mb-2 align-items-center mb-lg-0">
+                    <li class="nav-item mr-2">
+                        <a class=" border d-flex align-items-center" aria-current="page"
+                            style="color: black;  font-weight: 700;padding: 5px; text-decoration: none;"
+                            href="/organizations"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"
+                                width="16" data-view-component="true" class="octicon octicon-organization">
+                                <path fill-rule="evenodd"
+                                    d="M1.5 14.25c0 .138.112.25.25.25H4v-1.25a.75.75 0 01.75-.75h2.5a.75.75 0 01.75.75v1.25h2.25a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25h-8.5a.25.25 0 00-.25.25v12.5zM1.75 16A1.75 1.75 0 010 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 00.25-.25V8.285a.25.25 0 00-.111-.208l-1.055-.703a.75.75 0 11.832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0114.25 16h-3.5a.75.75 0 01-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 01-.75-.75V14h-1v1.25a.75.75 0 01-.75.75h-3zM3 3.75A.75.75 0 013.75 3h.5a.75.75 0 010 1.5h-.5A.75.75 0 013 3.75zM3.75 6a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM3 9.75A.75.75 0 013.75 9h.5a.75.75 0 010 1.5h-.5A.75.75 0 013 9.75zM7.75 9a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM7 6.75A.75.75 0 017.75 6h.5a.75.75 0 010 1.5h-.5A.75.75 0 017 6.75zM7.75 3a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5z">
+                                </path>
+                            </svg><span class="px-1" id="current-organization-name"
+                                style="font-size: .89rem;"></span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle black" href="#" id="featureDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg style="width:30px;height:30px" viewBox="0 0 24 24">
+                                <path fill="black"
+                                    d="M12 16C13.1 16 14 16.9 14 18S13.1 20 12 20 10 19.1 10 18 10.9 16 12 16M12 10C13.1 10 14 10.9 14 12S13.1 14 12 14 10 13.1 10 12 10.9 10 12 10M12 4C13.1 4 14 4.9 14 6S13.1 8 12 8 10 7.1 10 6 10.9 4 12 4M6 16C7.1 16 8 16.9 8 18S7.1 20 6 20 4 19.1 4 18 4.9 16 6 16M6 10C7.1 10 8 10.9 8 12S7.1 14 6 14 4 13.1 4 12 4.9 10 6 10M6 4C7.1 4 8 4.9 8 6S7.1 8 6 8 4 7.1 4 6 4.9 4 6 4M18 16C19.1 16 20 16.9 20 18S19.1 20 18 20 16 19.1 16 18 16.9 16 18 16M18 10C19.1 10 20 10.9 20 12S19.1 14 18 14 16 13.1 16 12 16.9 10 18 10M18 4C19.1 4 20 4.9 20 6S19.1 8 18 8 16 7.1 16 6 16.9 4 18 4Z" />
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right px-3 pt-3 navbarFeatureComponents"
+                            aria-labelledby="featureDropdown">
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            <img style="width: 2.2rem; height:2.2rem; border-radius: 100%;"
+                                src="https://t4.ftcdn.net/jpg/00/97/00/09/240_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg"
+                                id="profileImage" alt="">
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-right " aria-labelledby="profileDropdown"
+                            style="font-size: 14px;">
+                            <ul class="navigationProfileMenu list-unstyled p-0">
+
+                            </ul>
+                            <li><a class="dropdown-item  border-top" id="signOut" href="">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+
+
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="form-details-container">
+                <a class="navbar-brand" href="#"><b>Roles And Profiles</b></a>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="container p-0">
+
+        <div class="flex-row-center-start row m-4">
+            <div class="col-12 col-md-3  mb-3 mr-3">
+                <div class="d-flex align-items-center ">
+                    <a class="text-dark pb-5" href="/features">
+                        <svg id="Layer_2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"
+                            data-name="Layer 2">
+                            <path
+                                d="m22 11h-17.586l5.293-5.293a1 1 0 1 0 -1.414-1.414l-7 7a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414-1.414l-5.293-5.293h17.586a1 1 0 0 0 0-2z" />
+                        </svg>
+                        Back</a>
+                </div>
+                <nav class="side-nav row">
+                    <div class="col-12">
+                        <div class="list-group" id="list-tab" role="tablist">
+
+                            <a class="
+                                        list-group-item list-group-item-action
+                                        p-2 active
+                                    " data-toggle="list" href="#profile" role="tab"
+                                aria-controls="profiles">Profile</a>
+
+                            <a class="
+                                        list-group-item list-group-item-action
+                                        p-2
+                                    " data-toggle="list" href="#user" role="tab" aria-controls="user">User</a>
+
+                            <a class="
+                                        list-group-item list-group-item-action
+                                        p-2
+                                    " data-toggle="list" href="#rights" role="tab"
+                                aria-controls="hierarchytype">Rights</a>
+
+
+                        </div>
+                        <a class="
+                        p-2 text-dark nav-link
+                    " href="/manage-access" role="tab" aria-controls="hierarchytype">Manage
+                            Access</a>
+
+                    </div>
+                </nav>
+            </div>
+            <div class="
+                        col-12 col-md-8
+                        tab-content tab-pane
+                    " id="nav-tabContent">
+                <!-- + roles tab panel-->
+                <div class="tab-pane  " id="roles" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="tab-pane fade show" id="pages" role="tabpanel" aria-labelledby="list-home-list">
+                        <div class="action-bar-container p-0">
+                            <h3 class="col-12 p-0">Roles</h3>
+
+                            <div class="action-bar row w-100 m-0 p-0">
+                                <div class="col-12 flex-row-end-center p-0">
+                                    <button class="
+                                                btn btn-sm
+                                            " data-toggle="modal" id="create-new-role-btn"
+                                        data-target="#create-new-role-modal">
+                                        + New Role
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+
+
+                        <div class="category-container border border-bottom-0 rounded"></div>
+
+
+                    </div>
+                </div>
+
+                <!-- + profiles tab panel-->
+                <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class=" action-bar-container p-0">
+                        <h3 class="col-12 p-0 mb-5">Profile</h3>
+
+                        <div class="action-bar row w-100  p-0">
+
+                            <div class="input-group col-8" style="width: 100%;">
+                                <input type="text" id="profile-serach-input"
+                                    style="outline:none;width: 45%;padding: .4rem;" class="border" placeholder="Search"
+                                    aria-label="Recipient's username" aria-describedby="serach-forms-icon">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="serach-Profile"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path
+                                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-4 flex-row-end-center p-0">
+
+                                <button class="btn btn-sm " data-toggle="modal" id="create-new-profile-btn"
+                                    data-target="#create-new-profile-modal">
+                                    + New Profile
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-item-container border border-bottom-0 rounded"></div>
+
+
+                </div>
+                <!-- + Users tab panel-->
+                <div class="tab-pane" id="user" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="list-home-list">
+                        <div class="action-bar-container p-0">
+                            <h3 class="col-12 p-0">Users</h3>
+
+                            <div class="action-bar row w-100  p-0" style="margin-top: 7%;">
+
+                                <div class="input-group col-8" style="width: 100%;">
+                                    <input type="text" id="user-serach-input"
+                                        style="outline:none;width: 45%;padding: .4rem;" class="border"
+                                        placeholder="Search" aria-label="Recipient's username"
+                                        aria-describedby="serach-forms-icon">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="serach-User"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-4 flex-row-end-center p-0">
+                                    <button class="
+                                                btn btn-sm 
+                                            " data-toggle="modal" id="create-new-user-btn"
+                                        data-target="#create-new-user-modal">
+                                        + New User
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div class="user-container border border-bottom-0 rounded"></div>
+
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="rights" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="tab-pane fade show active" id="right" role="tabpanel" aria-labelledby="list-home-list">
+                        <div class="action-bar-container p-0">
+                            <h3 class="col-12 p-0 mb-5">Rights</h3>
+                            <div class="action-bar  row w-100  p-0">
+
+                                <div class="input-group col-8" style="width: 100%;">
+                                    <input type="text" id="rights-serach-input"
+                                        style="outline:none;width: 45%;padding: .4rem;" class="border"
+                                        placeholder="Search" aria-label="Recipient's username"
+                                        aria-describedby="serach-forms-icon">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="serach-Right"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-4 flex-row-end-center p-0">
+                                    <button class="
+                                        btn btn-sm 
+                                    " data-toggle="modal" id="create-new-rights-btn"
+                                        data-target="#create-right-name-modal">
+                                        + New Right
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div class="right-container border border-bottom-0 rounded" id="Rights-Container"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- + Create New Profile Form -->
+    <div class="modal fade show" id="create-new-profile-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel">
+                        <b>Create New Profile</b>
+                    </span>
+                    <button type="button" class="close" id="cancel-cross-btn-new-profile" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="create-new-profile" class="p-0 m-0">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-profile-name">Profile Name</label>
+                            </div>
+                            <div class="right">
+                                <input name="profile_name" type="text" class="form-control profile-field"
+                                    id="new-profile-name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="form-type">Select Right</label>
+                            </div>
+                            <div class="right">
+                                <select id="select-right-id" class="custom-select profile-field"
+                                    name="select_rights_id">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-description">Description</label>
+                            </div>
+                            <div class="right">
+                                <input name="profile_description" type="text" class="form-control profile-field"
+                                    id="new-description" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="form-type">Mobile Landing Page</label>
+                            </div>
+                            <div class="right">
+                                <select id="mobile-landing-page" class="custom-select profile-field"
+                                    name="select_landing_formid">
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer p-2">
+                        <button type="button" id="cancel-btn-new-profile" class="
+                                            btn btn-light btn-sm btn-custom-sm
+                                        " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                                            btn btn-success btn-sm btn-custom-sm
+                                        " id="create-profile-btn" value="Create" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- + Create New Role Form -->
+    <div class="modal fade show" id="create-new-role-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel">
+                        <b>Create New Role</b>
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="create-new-role" class="p-0 m-0">
+                    <div class="modal-body">
+                        <div id="role-form-hint-control"></div>
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-category-name">Role Name</label>
+                            </div>
+                            <div class="right">
+                                <input name="role_name" type="text" class="form-control role-field"
+                                    id="new-role-name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-category-name">Reports To</label>
+                            </div>
+                            <div class="right">
+                                <select id="reports-to" class="custom-select role-field" name="reports_to"
+                                    value="Simple">
+                                    <option value="Manager">
+                                        Manager
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-category-name">Accessible to same Level</label>
+                            </div>
+                            <div class="right">
+                                <input type="checkbox" class="role-field" name="accessible_to_same_level"
+                                    id="accessible-to-same-level">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-form-name">Description</label>
+                            </div>
+                            <div class="right">
+                                <input name="roles_description" type="text" class="form-control role-field"
+                                    id="new-description-for-role" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-role-image">role image</label>
+                            </div>
+                            <div class="right">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="hidden" name="role_image" id="role-profile-image"
+                                            class="role-field">
+                                        <input type="file" accept="image/png, image/jpeg, image/jpg"
+                                            id="role-image-input" class="
+                                                        form-control
+                                                        btn-sm
+                                                        custom-file-input
+                                                    " value="">
+                                        <label class="custom-file-label" for="role-image-input"
+                                            id="role-file-input-label" style="overflow: hidden">Choose File</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer p-2">
+                        <button type="button" class="
+                                            btn btn-light btn-sm btn-custom-sm
+                                        " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                                            btn btn-success btn-sm btn-custom-sm
+                                        " id="create-category-btn" value="Create" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- + Create New User Form -->
+    <div class="modal fade show" id="create-new-user-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel">
+                        <b>Create New User</b>
+                    </span>
+                    <button type="button" class="close" id="cancel-cross-btn-new-user" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="create-new-user" class="p-0 m-0">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-email">Email</label>
+                            </div>
+                            <div class="right">
+                                <input name="user_email" type="text" class="form-control user-field" id="new-email" />
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="user-modal-select-profile-container">
+                            <div class="left">
+                                <label for="select-user-profile-for-user">Select Profile</label>
+                            </div>
+                            <div class="right">
+                                <select id="select-user-profile-for-user" class=" custom-select user-field"
+                                    name="user_profile">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label>Admin</label>
+                            </div>
+                            <div class="right d-flex align-items-center">
+                                <input type="checkbox" id="admin-checkbox" name="user_administrator">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer p-2">
+                        <button  type="button" class=" cancel-new-user-btn
+                                    btn btn-light btn-sm btn-custom-sm
+                                        " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                                            btn btn-success btn-sm btn-custom-sm
+                                        " id="create-user-btn" value="Save" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- + Create Rights Form -->
+    <div class="modal fade show" id="create-right-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content " style="width:630px">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel">
+                        <b>Create New Rights</b>
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="create-new-rights" class="p-0 m-0">
+                    <div class="modal-body">
+                        <div class="modal-footer pt-3 "
+                            style="position: sticky;top: 95.5vh;z-index: 1000;background-color: #fff;">
+                            <button type="submit" class="
+                                                btn btn-light btn-sm btn-custom-sm sticky-bottom
+                                            ">
+                                Done
+                            </button>
+
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <div class="left">
+                                <label for="new-rights-name">Rights Name</label>
+                            </div>
+                            <div class="right">
+                                <input name="right_name" type="text" class="form-control create-right-field"
+                                    id="new-rights-name" />
+                            </div>
+                        </div> -->
+                        <div class="input-group mb-3" style="width: 100%;">
+                            <input type="text" id="rights-serach-forms-input-new"
+                                style="outline:none;width: 93%;padding: .4rem;" class="border" placeholder="Search"
+                                aria-label="Recipient's username" aria-describedby="serach-forms-icon">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="serach-forms-icon"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="padding-bottom:1.2rem !important; margin-bottom: 0 !important;">
+                            <div style="width: 100%;">
+                                <div class='container'>
+                                    <div style='margin-top:24px;'>
+                                        <table class='table create-right-field'>
+                                            <thead>
+                                                <tr>
+                                                    <td></td>
+                                                    <th>Form Name</th>
+                                                    <th>View</th>
+                                                    <th>Create</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="createRightsTbody">
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- + Create Rights Form Name -->
+
+
+    <div class="modal fade show" id="create-right-name-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content ">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel1">
+                        <b>Create New Rights Name</b>
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" id="cancel-cross-btn-new-rights">×</span>
+                    </button>
+                </div>
+                <form id="create-new-rights-name" class="p-0 m-0">
+                    <div class="modal-body">
+
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-rights-name">Rights Name</label>
+                            </div>
+                            <div class="right">
+                                <input name="right_name" type="text" class="form-control create-right-field"
+                                    id="new-rights-name" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="modal-footer pt-3 " style="z-index: 1000;background-color: #fff;">
+                            <button type="submit" class="
+                                btn btn-light btn-sm btn-custom-sm sticky-bottom
+                            ">
+                                ADD
+                            </button>
+
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- + Edit Rights Form Name -->
+
+    <div class="modal fade show" id="edit-right-name-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content ">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel1">
+                        <b>Edit Rights Name</b>
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="edit-rights-name-form" class="p-0 m-0">
+                    <div class="modal-body">
+
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="edit-rights-name">Rights Name</label>
+                            </div>
+                            <div class="right">
+                                <input name="right_name" type="text" class="form-control create-right-field"
+                                    id="edit-rights-name" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="modal-footer pt-3 " style="z-index: 1000;background-color: #fff;">
+                            <button type="submit" class="
+                                btn btn-light btn-sm btn-custom-sm sticky-bottom
+                            ">
+                                Update
+                            </button>
+
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- ! Edit profile -->
+    <div class="modal fade" id="edit-profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Edit Profile
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="edit-profile" class="m-0">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="edit-form-name">New Profile Name</label>
+                            </div>
+                            <div class="right">
+                                <input name="profile_name" type="text" class="form-control" id="edit-profile-name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="form-type">Select Right</label>
+                            </div>
+                            <div class="right">
+                                <select id="edit-select-rights-id" class="custom-select" name="select_rights_id">
+                                    <option value="null">
+                                        No Rights
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="Description">Description</label>
+                            </div>
+                            <div class="right">
+                                <input name="profile_description" type="text" class="form-control"
+                                    id="edit-profile-description" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="form-type">Mobile Landing Page</label>
+                            </div>
+                            <div class="right">
+                                <select id="edit-mobile-landing-page" class="custom-select profile-field"
+                                    name="select_landing_formid">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="
+                           btn btn-light btn-sm btn-custom-sm
+                       " data-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <input type="submit" class="
+                           btn btn-success btn-sm btn-custom-sm
+                       " value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- !Edit role -->
+    <div class="modal fade show" id="edit-role-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel">
+                        <b>Edit New Role</b>
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="edit-role" class="p-0 m-0">
+                    <div class="modal-body">
+                        <div id="role-form-hint-control"></div>
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-role-name">New Role Name</label>
+                            </div>
+                            <div class="right">
+                                <input name="role_name" type="text" class="form-control edit-role-field"
+                                    id="edit-role-name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="edit-reports-to">Reports To</label>
+                            </div>
+                            <div class="right">
+                                <select id="edit-reports-to" class="custom-select edit-role-field" name="reports_to">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="edit-accessible-level">Accessible to same Level</label>
+                            </div>
+                            <div class="right">
+                                <input type="checkbox" class="edit-role-field" name="accessible_to_same_level"
+                                    id="edit-accessible-to-same-level">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="new-form-name">Description</label>
+                            </div>
+                            <div class="right">
+                                <input name="roles_description" type="text" class="form-control edit-role-field"
+                                    id="edit-description-for-role" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="edit-role-image">role image</label>
+                            </div>
+                            <div class="right">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="hidden" name="role_image" id="edit-role-image"
+                                            class="edit-role-field">
+                                        <input type="file" accept="image/png, image/jpeg, image/jpg"
+                                            id="edit-role-image-input" class="
+                                   form-control
+                                   btn-sm
+                                   custom-file-input
+                               ">
+                                        <label class="custom-file-label" for="edit-role-image-input"
+                                            id="edit-role-file-input-label" style="overflow: hidden">Choose File</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer p-2">
+                        <button type="button" class="
+                       btn btn-light btn-sm btn-custom-sm
+                   " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                       btn btn-success btn-sm btn-custom-sm
+                   " id="edit-role-btn" value="Update" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- !Edit user -->
+    <div class="modal fade" id="edit-user-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Edit User
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="edit-user" class="m-0">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label for="edit-email-id">Email ID:</label>
+                            </div>
+                            <div class="right">
+                                <input name="user_email" type="text" class="form-control edit-user-field"
+                                    id="edit-email-id" disabled />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group" id="edit-user-profile-container">
+                            <div class="left">
+                                <label for="edit-user-profile">Edit profile:</label>
+                            </div>
+                            <div class="right">
+                                <select id="edit-user-profile-for-user" class="custom-select edit-user-field"
+                                    name="user_profile">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="left">
+                                <label>Admin</label>
+                            </div>
+                            <div class="right d-flex align-items-center">
+                                <input type="checkbox" checked="" id="edit-admin-check" name="user_administrator">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="
+                   btn btn-light btn-sm btn-custom-sm
+               " data-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <input type="submit" class="
+                   btn btn-success btn-sm btn-custom-sm
+               " value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- + Edit Rights Form -->
+    <div class="modal fade show" id="edit-right-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width:630px">
+                <div class="modal-header p-2">
+                    <span class="modal-title" id="exampleModalLabel">
+                        <!-- <b>Edit Rigts</b>
+                         -->
+                        <label style=" font-size: small;color:gray; line-height: normal;" for="rights-name">Rights
+                            Name
+                            :</label><br />
+                        <input name="right_name" type="text" style="outline:none; font-size: large;"
+                            class="border-0 edit-right-field" id="rights-name" readonly />
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" id="edit-rights-close" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="edit-rights">
+                    <div class="modal-body">
+
+
+                        <div class="input-group mb-2" style="width: 100%;">
+                            <input type="text" id="rights-serach-forms-input-edit"
+                                style="outline:none;width: 93%;padding: .4rem;" class="border" placeholder="Search"
+                                aria-label="Recipient's username" aria-describedby="serach-forms-icon">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="serach-forms-icon"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="width: 100%;">
+                                <div class='container'>
+                                    <div style='margin-top:24px; margin-bottom:12px;'>
+                                        <table class='table k edit-right-field'>
+                                            <thead>
+                                                <tr>
+                                                    <td></td>
+                                                    <th>Form Name</th>
+                                                    <th>View</th>
+                                                    <th>Create</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="editRightsTbody">
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- delete profile confirmation -->
+    <div class="modal fade show" id="delete-profile-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-modal="true">
+        <div class="modal-dialog" role="document" style="width: 320px">
+            <div class="modal-content">
+                <form id="delete-profile" class="m-0">
+                    <div class="modal-body p-2">
+                        <span id="delete-page-message"><b>Are You Sure?</b></span>
+                    </div>
+                    <div class="modal-footer p-0">
+                        <button type="button" class="
+                                   btn btn-light btn-sm btn-custom-sm
+                               " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                                   btn btn-danger btn-sm btn-custom-sm
+                               " value="Delete" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- delete role confirmation -->
+    <div class="modal fade show" id="delete-role-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-modal="true">
+        <div class="modal-dialog" role="document" style="width: 320px">
+            <div class="modal-content">
+                <form id="delete-role" class="m-0">
+                    <div class="modal-body p-2">
+                        <span id="delete-role-message"><b>Are You Sure?</b></span>
+                    </div>
+                    <div class="modal-footer p-0">
+                        <button type="button" class="
+                                   btn btn-light btn-sm btn-custom-sm
+                               " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                                   btn btn-danger btn-sm btn-custom-sm
+                               " value="Delete" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- delete right confirmation -->
+    <div class="modal fade show" id="delete-right-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-modal="true">
+        <div class="modal-dialog" role="document" style="width: 320px">
+            <div class="modal-content">
+                <form id="delete-right" class="m-0">
+                    <div class="modal-body p-2">
+                        <span id="delete-right-message"><b>Are You Sure?</b></span>
+                    </div>
+                    <div class="modal-footer p-0">
+                        <button type="button" class="
+                                   btn btn-light btn-sm btn-custom-sm
+                               " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                                   btn btn-danger btn-sm btn-custom-sm
+                               " value="Delete" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- delete user confirmation -->
+    <div class="modal fade show" id="delete-user-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-modal="true">
+        <div class="modal-dialog" role="document" style="width: 320px">
+            <div class="modal-content">
+                <form id="delete-user" class="m-0">
+                    <div class="modal-body p-2">
+                        <span id="delete-user-message"><b>Are You Sure?</b></span>
+                    </div>
+                    <div class="modal-footer p-0">
+                        <button type="button" class="
+                                   btn btn-light btn-sm btn-custom-sm
+                               " data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input type="submit" class="
+                                   btn btn-danger btn-sm btn-custom-sm
+                               " value="Delete" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="/static/roles-and-profiles/public/scripts/uuid.min.js"></script>
+    <script src="/static/roles-and-profiles/public/scripts/snackbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="/static/roles-and-profiles/src/main.js" type="module"></script>
+</body>
+
+</html>

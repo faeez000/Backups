@@ -1,0 +1,12 @@
+import OrganizationSwitchService from "./OrganizationSwitchService.js";
+import ImageUploadService from "./ImageUploadService.js";
+import { apiHostController } from "../domain/ApiHostController/ApiHostController.js";
+import UserAccountService from "./UserAccountService.js";
+
+const API_DOMAIN_URL = apiHostController.getApiDomain(window.location.hostname);
+
+const imageUploadService = new ImageUploadService(API_DOMAIN_URL);
+const organizationSwitchService = new OrganizationSwitchService(API_DOMAIN_URL);
+const userAccountService = new UserAccountService(API_DOMAIN_URL);
+
+export { organizationSwitchService, imageUploadService, userAccountService };

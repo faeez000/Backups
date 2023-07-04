@@ -1,0 +1,25 @@
+.tox-button {
+    border-radius: 4px !important;
+}
+.tox .tox-mbtn {
+    height: 1rem !important;
+}
+.template-name-container {
+    height: 20px;
+    font-size: 16px;
+    padding: 6px 0px 6px 20px;
+    border: 1px solid transparent !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.editor-badge {
+    padding: 4px 8px;
+    border-radius: 10px;
+    background-color: #2ba0ff;
+    color: #fff;
+    font-size: small;
+}
+.tox-button {
+    font-weight: normal !important;
+}

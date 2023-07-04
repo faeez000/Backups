@@ -1,0 +1,12 @@
+.c-card {
+    border: 1px solid var(--table-border);
+    border-radius: 4px;
+    padding: 4px;
+}
+.c-card a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+.c-card a:hover {
+    color: var(--link-hover-color);
+}

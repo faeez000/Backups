@@ -1,0 +1,16 @@
+:root {
+    --primary-color: #f1f2fb;
+    --secondary-color: #7f74fa;
+    --link-hover-color: #7f74fa;
+    --border-color: #ccc;
+    --border-hover-color: #cacaca;
+    --text-color: #000;
+    --main-menu-hover-text-color: #fff;
+    --icon-color: #333333;
+    --table-border: #e4e6e9;
+
+    /* builder */
+    --bgc: #fff;
+    --element-bgc: #fff;
+    --element-dark-text: #000;
+}

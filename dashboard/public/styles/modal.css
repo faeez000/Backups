@@ -1,0 +1,108 @@
+#modal input[type='text'] {
+  padding: 2px !important;
+}
+#modal .list-group-item {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 8px !important;
+  margin-bottom: 5px !important;
+  border-radius: 4px !important;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+#modal .row2 {
+  padding: 0px 25px;
+}
+#modal .row2 label {
+  margin: 0px;
+  font-size: small;
+  padding-left: 2px;
+}
+#modal .row2 .radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 8px;
+}
+#modal .list-group-item:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+#modal .list-content {
+  width: 90%;
+  padding-left: 5px;
+  font-size: small !important;
+  font-weight: 500;
+}
+
+#modal .search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px !important;
+  margin-bottom: 20px !important;
+}
+#modal .search-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#modal .search-section .search {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#modal .search-section .search input {
+  width: 80% !important;
+}
+#modal .search-section .search button {
+  width: 10% !important;
+}
+#modal .search-section .form-control {
+  padding: 2px 5px !important;
+}
+
+.admin #admin-form-move-modal .modal-body {
+  height: 20vh !important;
+  min-height: 20vh !important;
+  max-height: 20vh !important;
+}
+.admin #admin-form-edit-modal .modal-body {
+  height: 30vh !important;
+  min-height: 30vh !important;
+  max-height: 30vh !important;
+}
+/* .admin #admin-form-move-modal .modal-body select {
+  width: 250px !important;
+  max-width: 250px !important;
+} */
+.admin .modal-body .form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.admin .modal-body .form-group .left {
+  display: flex;
+  justify-content: flex-start !important;
+  align-items: center;
+  width: 40% !important;
+  max-width: 40% !important;
+}
+.admin .modal-body .form-group .right {
+  width: 90% !important;
+  max-width: 90% !important;
+  display: flex;
+}
+.admin .modal-body .form-group .priority-containe select {
+  width: 50%;
+}
+.warning {
+  color: rgb(252, 76, 76);
+}

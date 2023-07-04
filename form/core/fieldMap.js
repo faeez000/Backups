@@ -1,0 +1,44 @@
+import ButtonField from "../components/Fields/ButtonField";
+import ChatTitle from "../components/Fields/ChatTitle";
+import CheckboxField from "../components/Fields/CheckboxField";
+import DatePickerField from "../components/Fields/DatePickerField";
+import EmailField from "../components/Fields/EmailField";
+import InstanceField from "../components/Fields/InstanceField";
+import LabelField from "../components/Fields/LabelField";
+import NumberField from "../components/Fields/NumberField";
+import RadioField from "../components/Fields/RadioField";
+import SelectField from "../components/Fields/SelectField";
+import TelField from "../components/Fields/TelField";
+import TextareaField from "../components/Fields/TextareaField";
+import TextField from "../components/Fields/TextField";
+import TimePickerField from "../components/Fields/TimePickerField";
+import TotalField from "../components/Fields/TotalField";
+import UploadField from "../components/Fields/UploadField";
+import UsersField from "../components/Fields/UsersField";
+import ElementDividerField from "../components/Fields/ElementDividerField";
+
+const fieldMap = new Map();
+
+fieldMap.set("Email", EmailField);
+fieldMap.set("TextBox", TextField);
+fieldMap.set("Number", NumberField);
+fieldMap.set("TextArea", TextareaField);
+fieldMap.set("Date", DatePickerField);
+fieldMap.set("Tel", TelField);
+fieldMap.set("Dropdown", SelectField);
+fieldMap.set("Radio", RadioField);
+fieldMap.set("Checkbox", CheckboxField);
+fieldMap.set("FileUpload", UploadField);
+fieldMap.set("ImageUpload", UploadField);
+fieldMap.set("Time", TimePickerField);
+fieldMap.set("Label", LabelField);
+fieldMap.set("Button", ButtonField);
+fieldMap.set("Instance", InstanceField);
+fieldMap.set("Total", TotalField);
+fieldMap.set("Users", UsersField);
+fieldMap.set("ChatTitle", TextField);
+fieldMap.set("ElementDivider", ElementDividerField);
+fieldMap.set("BottomSectionDivider", ElementDividerField);
+fieldMap.set("BottomDivider", ElementDividerField);
+
+export { fieldMap };

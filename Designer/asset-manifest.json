@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.16c7a21a.css",
+    "main.js": "/static/js/main.8c7f0065.js",
+    "static/js/787.13d3201e.chunk.js": "/static/js/787.13d3201e.chunk.js",
+    "static/media/align-strech.svg": "/static/media/align-strech.c3285555e1366ab67d32.svg",
+    "static/media/align-center.svg": "/static/media/align-center.de8334cbf334829c7143.svg",
+    "static/media/align-end.svg": "/static/media/align-end.cedc3e9698e950749d5d.svg",
+    "static/media/flex-row.svg": "/static/media/flex-row.f7f1cea9015bee012231.svg",
+    "static/media/flex-row-rev.svg": "/static/media/flex-row-rev.096ab5621b7a2de2cd92.svg",
+    "static/media/text-center.svg": "/static/media/text-center.4d509e35d43c47e4d3e3.svg",
+    "static/media/text-justify.svg": "/static/media/text-justify.6eb45cbc2c8bd7ff2420.svg",
+    "static/media/text-left.svg": "/static/media/text-left.b4e9ebabcf67855b1a26.svg",
+    "static/media/text-right.svg": "/static/media/text-right.002ccd0905018df819d1.svg",
+    "static/media/justify-space-between.svg": "/static/media/justify-space-between.0451fc38049facd9ed81.svg",
+    "static/media/justify-space-around.svg": "/static/media/justify-space-around.ed6924f422a09e1c984a.svg",
+    "static/media/flex-column.svg": "/static/media/flex-column.b17af11427882a98e2f8.svg",
+    "static/media/flex-column-rev.svg": "/static/media/flex-column-rev.08998f4df6b96d65d0fd.svg",
+    "static/media/align-start.svg": "/static/media/align-start.593eed4ce46ded27f69a.svg",
+    "static/media/justify-end.svg": "/static/media/justify-end.e8f3c14e46331331d841.svg",
+    "static/media/justify-center.svg": "/static/media/justify-center.e55c615394dbe3ab5952.svg",
+    "static/media/justify-start.svg": "/static/media/justify-start.7b366a81df385613b8e5.svg",
+    "index.html": "/index.html",
+    "static/media/strikeThrough.svg": "/static/media/strikeThrough.7a21009fe1b114c98df5.svg",
+    "static/media/cross.svg": "/static/media/cross.2cd42c96ebef41586f8d.svg",
+    "static/media/underline.svg": "/static/media/underline.f297554889315b492c02.svg",
+    "main.16c7a21a.css.map": "/static/css/main.16c7a21a.css.map",
+    "main.8c7f0065.js.map": "/static/js/main.8c7f0065.js.map",
+    "787.13d3201e.chunk.js.map": "/static/js/787.13d3201e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.16c7a21a.css",
+    "static/js/main.8c7f0065.js"
+  ]
+}

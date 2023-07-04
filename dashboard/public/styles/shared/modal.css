@@ -1,0 +1,33 @@
+/* modal */
+
+.modal .modal-header {
+  padding: 0.6rem !important;
+}
+.modal .modal-footer {
+  padding: 0.6rem !important;
+}
+.modal .form-group {
+  display: flex;
+  justify-content: space-between;
+}
+.modal .form-group label {
+  margin: 0px !important;
+}
+.modal .form-group .left {
+  width: 25%;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.modal .form-group .right {
+  width: 70%;
+}
+.modal .note {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 0.2rem;
+}
+.modal .note ul {
+  list-style-position: outside;
+}

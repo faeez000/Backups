@@ -1,0 +1,43 @@
+.template-element-wrapper {
+  display: flex;
+  justify-content: space-between !important;
+}
+
+.custom-col {
+  padding: 0px !important;
+  overflow:hidden;
+}
+
+#content-editor {
+  height: 90% !important;
+  border: none !important;
+}
+
+#preview-section {
+  display: none;
+  border-right: 1px solid var(--table-border);
+}
+
+.preview-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-section {
+  width: 100% !important;
+}
+
+#back-to-edit {
+  top: 70px;
+  position: sticky;
+}
+
+#section-name {
+  width: 100%;
+  outline: none !important;
+}
+
+.modal-header {
+  border: none !important;
+}

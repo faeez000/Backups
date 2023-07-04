@@ -1,0 +1,12 @@
+.letter-builder-container {
+  padding: 0px !important;
+}
+#editor {
+  min-height: 100vh;
+}
+.ql-toolbar {
+  top: 60px;
+  position: sticky;
+  background: #fff;
+  z-index: 100;
+}

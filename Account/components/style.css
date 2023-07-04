@@ -1,0 +1,24 @@
+.account-table-container .ant-table-thead > tr>th{
+    background-color: #848482;
+    color: white;
+    font-weight: bold;
+    color:#fff
+}
+
+ .account-modal .ant-modal-title{
+    color:#7e56da;
+}
+
+.account-modal  .ant-modal-close-x span :hover{
+    color:#7e56da;
+}
+
+.account-tab .ant-tabs-content-holder {
+    background-color: white !important;
+}
+
+.ant-popover-inner-content{
+    color: red;
+    font-weight: 600;    
+}
+

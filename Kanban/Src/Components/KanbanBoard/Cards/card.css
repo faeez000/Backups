@@ -1,0 +1,19 @@
+.card_top_moreOption {
+    opacity: 0;
+    transition: 200ms;
+}
+
+.Card:hover .card_top_moreOption {
+    opacity: 1;
+}
+
+span {
+    max-width: 200px;
+    word-wrap: break-word;
+    
+}
+
+.card_subTitle{
+    font-family: sans-serif ;
+}
+

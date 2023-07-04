@@ -1,0 +1,12 @@
+.modal-header,
+.modal-footer {
+  padding: 0.4rem 0.7rem !important;
+}
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-header button {
+  outline: none;
+}

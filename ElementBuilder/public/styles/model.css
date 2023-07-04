@@ -1,0 +1,23 @@
+.modal-header,
+.modal-footer {
+    padding: 0.4rem 0.7rem !important;
+    background-color: #fff;
+}
+.modal-body {
+    background-color: #fff;
+    overflow: auto;
+}
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.fade .modal-dialog {
+    -webkit-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+    overflow: hidden;
+}
+.modal-header button {
+    outline: none;
+}

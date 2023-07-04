@@ -1,0 +1,27 @@
+:root {
+    --filter-dropdown-font-size: 13px;
+    --primary-blue: #40a9ff;
+    --custom-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+        0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.table-App {
+    padding: 20px 30px;
+    border: 0.4px solid rgba(0, 0, 0, 0.1);
+}
+
+.ant-btn-primary {
+    color: rgba(0, 0, 0, 0.85);
+}
+.ant-btn-primary:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+.ant-table-filter-dropdown li,
+.ant-table-filter-dropdown button {
+    font-size: var(--filter-dropdown-font-size);
+}
+
+.add_modal_uploader .ant-upload {
+    width: 100%;
+}

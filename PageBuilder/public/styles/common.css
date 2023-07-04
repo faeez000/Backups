@@ -1,0 +1,30 @@
+.container-fluid {
+    --height: 2.25rem;
+    --btn-line-height: 2rem;
+    --line-height: 1.5625rem;
+}
+select,
+input[type="text"] {
+    height: var(--height) !important;
+    line-height: var(--line-height) !important;
+}
+.btn {
+    min-width: 4.375rem !important;
+    padding: 4px 16px;
+    vertical-align: middle;
+}
+label {
+    margin: 0px !important;
+}
+.btn-link {
+    text-decoration: none;
+}
+.badge {
+    font-weight: normal;
+}
+.card-title {
+    overflow: hidden !important;
+    width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

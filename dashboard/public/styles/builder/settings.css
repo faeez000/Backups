@@ -1,0 +1,20 @@
+.item i {
+    display: none;
+    cursor: pointer;
+}
+/* .item {
+    padding: 3px;
+    border: 1px solid transparent;
+} */
+.item:hover i {
+    display: block;
+}
+/* .item:hover {
+    border: 1px solid var(--table-border);
+} */
+.item-name {
+    width: 70%;
+}
+.item-action {
+    width: 30%;
+}

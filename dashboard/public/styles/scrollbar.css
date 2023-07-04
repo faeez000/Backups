@@ -1,0 +1,31 @@
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f7e7e7;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 0px;
+}
+.navbar .megamenu ::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+/* Track */
+.navbar .megamenu ::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+/* Handle */
+.navbar .megamenu ::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}

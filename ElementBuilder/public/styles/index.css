@@ -1,0 +1,46 @@
+@import "./component.css";
+@import "./variables.css";
+@import "./common.css";
+@import "./form.css";
+@import "./model.css";
+@import "./main.css";
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.grid-item {
+    font-size: 15px;
+    width: 4rem;
+    text-decoration: none;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.nav-link {
+    padding: 0.1rem 0.3rem !important;
+}
+.dropdown-item {
+    padding: 6px 10px !important;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(245, 245, 245);
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.dropdown-menu {
+    margin-top: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15),
+        0 6px 20px 0 rgba(0, 0, 0, 0.08);
+    border-top: 1px rgb(233, 233, 233) solid;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}

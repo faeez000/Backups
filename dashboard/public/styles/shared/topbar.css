@@ -1,0 +1,6 @@
+.top-bar {
+  padding: 10px;
+  border: 1px solid var(--table-border);
+  border-left: none;
+  border-right: none;
+}

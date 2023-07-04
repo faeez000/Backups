@@ -1,0 +1,23 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.grid-item {
+    font-size: 15px;
+    width: 4rem;
+    text-decoration: none;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.dropdown-item {
+    /* background-color: rgb(245, 245, 245); */
+    color: black;
+}
+
+.nav-link {
+    padding: 0.1rem 0.5rem !important;
+}

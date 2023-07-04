@@ -1,0 +1,22 @@
+.form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+.left {
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: center;
+    width: 40% !important;
+    max-width: 40% !important;
+}
+.right {
+    width: 90% !important;
+    max-width: 90% !important;
+    display: flex;
+}
+.ant-checkbox-wrapper {
+    margin-left: 0 !important;
+}

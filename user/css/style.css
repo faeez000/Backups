@@ -1,0 +1,8 @@
+.image-container-ant .ant-image-mask{
+    border-radius: 5rem;
+}
+.ant-image-preview-img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

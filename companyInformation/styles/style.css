@@ -1,0 +1,28 @@
+.upload-list-inline-logo .ant-upload-list-item {
+    /* float: left; */
+    width: 70px;
+    height: 50px;
+    margin-bottom: 5px !important;
+}
+
+/* .upload-list-inline {
+    display: flex;
+    align-items: flex-start;
+}  */
+
+.ant-upload-list-item-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+}
+.ant-upload-span {
+    display: flex !important;
+}
+.ant-input-number-out-of-range input {
+    color: black;
+}
+
+.ant-message-custom-content {
+    display: flex !important;
+    align-items: center;
+}

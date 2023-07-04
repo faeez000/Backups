@@ -1,0 +1,236 @@
+.container-fluid {
+    --height: 2.25rem;
+    --btn-line-height: 2rem;
+    --line-height: 1.5625rem;
+}
+
+select,
+input[type="text"] {
+    height: var(--height) !important;
+    line-height: var(--line-height) !important;
+}
+
+.btn {
+    min-width: 4.375rem !important;
+    padding: 4px 16px;
+    vertical-align: middle;
+}
+
+label {
+    margin: 0px !important;
+}
+
+.btn-link {
+    text-decoration: none;
+}
+
+.badge {
+    font-weight: normal;
+}
+
+.card-title {
+    overflow: hidden !important;
+    width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* < updated style  */
+.sub-container {
+    width: 90% !important;
+    max-width: 90%;
+    min-width: 320px !important;
+}
+
+.btn-custom {
+    background-color: #fafafa;
+    outline: none;
+    border: 1px solid gray !important;
+}
+
+.btn-custom:hover {
+    border: 1px solid skyblue !important;
+}
+
+.btn-custom:focus {
+    outline: skyblue;
+}
+
+.custom-sm {
+    height: calc(2rem + 1px) !important;
+    font-size: 0.875rem !important;
+    padding: 0.25rem 0.5rem !important;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.grid-item {
+    font-size: 15px;
+    width: 4rem;
+    text-decoration: none;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.nav-link {
+    padding: 0.1rem 0.3rem !important;
+}
+
+.dropdown-item {
+    padding: 6px 10px !important;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(245, 245, 245);
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.dropdown-menu {
+    margin-top: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15),
+        0 6px 20px 0 rgba(0, 0, 0, 0.08);
+    border-top: 1px rgb(233, 233, 233) solid;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
+
+/* organization css */
+.organization-back-btn{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    transition: 00.250s;
+    font-size:14px ;
+}
+.organization-back-btn:hover{
+    text-decoration: none;
+    color: #00abfb;
+    transition: 00.250s;
+}
+
+.organization-name{
+    margin-bottom: 15px;
+}
+
+.create-organization-container{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+#Organization-serach-input{
+    width: 16rem;
+    padding: 0.4rem;
+    outline: none;
+    border-radius: 5px;
+    margin-right: 0.4rem;
+}
+#Organization-serach-input:hover{
+    border: 1px solid #40a9ff !important;
+}
+#Organization-serach-input:focus{
+    box-shadow:0px 0px 0px  2px rgb(24 144 255/20%) !important;
+    border: 1px solid #40a9ff !important;
+    
+
+}
+
+#create-new-organization-btn {
+    color: white;
+    background-color: #0368bb;
+    padding: 7px 0px !important;
+    width: 11rem;
+    transition: all 0.250s;
+
+}
+
+#create-new-organization-btn:hover {
+    color: white;
+    background-color: #057cdd;
+    transition: all 0.250s;
+
+}
+
+.orglink{
+    color: black;
+}
+
+
+.orglink:hover{
+    text-decoration: none;
+}
+
+.card-action{
+    color:#515151
+}
+
+/* spinner loading */
+.loader_spinner {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #3498db;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* error occured not able to load  */
+
+
+/* for mobile view css organixation page */
+@media only screen and (max-width: 767px) {
+    .organization-name{
+        text-align: center;
+        width: 100% !important;
+    }
+    .sub-container{
+        width: 100% !important;
+    }
+    .create-organization-container {
+        flex-direction: column;
+
+    }
+    #create-new-organization-btn{
+        width: 100%;
+        padding: 10px 0px !important;
+        margin-top: 10px !important;
+    }
+    #serach-Organization{
+        display: none;
+    }
+    #Organization-serach-input{
+        width: 100% ;
+    }
+    .card-action{
+        display: contents;
+    }
+}

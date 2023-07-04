@@ -1,0 +1,13 @@
+.main-navbar-db{
+    padding:3rem ;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .main-navbar-db{
+        padding: 0.5rem;
+    }
+    #current-organization-name{
+        font-size: 0.69rem !important;
+    }
+}

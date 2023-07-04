@@ -1,0 +1,113 @@
+.admin .btn {
+  min-width: 70px;
+}
+.admin,
+.container-fluid {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.admin .page-header {
+  padding: 10px;
+  color: #41515a;
+  background-color: #f2f3fa;
+}
+.admin #app .app-section {
+  width: 100%;
+  flex-direction: row;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+}
+.admin .page-header .header {
+  padding: auto 30px !important;
+}
+.action-bar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.action-bar-container .action-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin .action-bar-right-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.admin .card-container {
+  width: 100%;
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+}
+.admin .form-section {
+  margin-bottom: 10px;
+}
+.admin .card {
+  width: 100% !important;
+  margin: 2px;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.admin .card-container .container {
+  padding: 5px !important;
+}
+.admin .card-row-1 {
+  display: flex;
+  justify-content: space-between;
+}
+.admin .card-title {
+  margin: 0px !important;
+  cursor: pointer;
+}
+.admin .card-details {
+  display: flex;
+  justify-content: flex-start;
+  color: #b9c0c2;
+}
+.admin .card-details .detail {
+  padding: 2px;
+}
+.admin .badge {
+  font-weight: normal !important;
+}
+.admin .card-row-2 {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.admin .card-row-2 span {
+  width: 100%;
+}
+.admin .card-row-2 a {
+  text-decoration: none;
+  color: #000;
+}
+.admin .card-action .dropdown-item {
+  font-size: small;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px;
+}
+.admin .card-action .dropdown-item span {
+  vertical-align: text-bottom !important;
+}
+.admin .dropdown-menu {
+  min-width: 15rem !important;
+  padding: 0px;
+}
+.admin .card-action i {
+  margin-top: -2px;
+  margin-right: 4px;
+  cursor: pointer;
+}

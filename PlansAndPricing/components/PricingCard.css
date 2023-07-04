@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* .pricingcard{
+    z-index: 50;
+}
+.pricingcard:hover{
+    transform: scale(1.021);
+    z-index: 100;
+}
+.pricingcard2:hover{
+    transform: scale(1.041);
+    z-index: 100;
+}
+
+.pricingcard::before{
+    content: "";    
+    position: absolute;
+    color: white;
+    width: 95px;
+    height: 95px;
+    background-color:rgb(2 132 199  );
+    z-index: 500;
+    top: -48px;
+    left: -50px;
+    transform: rotate(45deg);
+
+} 
+
+.pricingcard2::before{
+    content: "";    
+    position: absolute;
+    color: white;
+    width: 95px;
+    height: 95px;
+    background-color:rgb(192 132 252 );
+    z-index: 500;
+    top: -48px;
+    left: -50px;
+    transform: rotate(45deg);
+
+}  */
+
+.card-header-name{
+    text-shadow: 2px 1px 2px #0000009c;
+}
+
+
+
+
+.price-header{    
+    background:linear-gradient(70deg, rgb(126, 85, 218), rgb(209 105 222));
+    -webkit-text-fill-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+}
+

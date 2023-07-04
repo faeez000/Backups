@@ -1,0 +1,116 @@
+#kanban .kanban-container {
+  width: 100%;
+  height: 84vh;
+  background-color: #fff;
+  margin: 10px 0px !important;
+  overflow-x: auto;
+  margin: 0px !important;
+}
+#kanban .kanban-board {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+#kanban .kanban-column {
+  min-width: 320px;
+  max-width: 320px;
+  height: 80vh;
+  overflow-y: hidden;
+  background-color: #f6f8fa;
+  margin-right: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--table-border);
+}
+#kanban .kanban-column-header {
+  padding: 8px !important;
+  height: 30px !important;
+  top: 0;
+  position: sticky;
+  z-index: 100;
+  background-color: #f6f8fa;
+}
+#kanban .kanban-column-header h3 {
+  font-size: 14px !important;
+}
+#kanban .kanban-column-card-container {
+  overflow-y: auto;
+  height: 100% !important;
+  padding: 8px;
+  padding-bottom: 80px;
+}
+
+#kanban .kanban-column-card {
+  width: 100%;
+  min-height: 70px;
+  background-color: #fff;
+  border: 1px solid var(--table-border);
+  border-radius: 0.3rem;
+  margin-top: 8px !important;
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  padding: 8px;
+}
+#kanban .kanban-column-card:hover {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  cursor: move;
+}
+#kanban p {
+  margin: 0px !important;
+  margin-bottom: 8px !important;
+}
+#kanban .kanban-card-body .small {
+  font-size: 90%;
+}
+#kanban .badge {
+  background-color: #f6f6f7 !important;
+  color: #7c7cf1 !important;
+  font-weight: normal;
+}
+#kanban .btn {
+  min-width: 70px;
+}
+#kanban .filter {
+  margin-top: 8px !important;
+}
+#kanban .filter-btn {
+  max-width: 70px;
+}
+
+#kanban .card {
+  margin-top: 4px;
+}
+#kanban .card-header {
+  padding: 0px 0px !important;
+}
+#kanban .card-body {
+  display: flex;
+  height: 2;
+  justify-content: space-between;
+  align-items: center;
+  transition: hieght 0.35s ease;
+  padding: 10px;
+}
+#kanban .card-body select {
+  max-width: 100%;
+}
+#kanban .key {
+  width: 35%;
+}
+#kanban .value {
+  width: 62%;
+}
+
+#kanban .kanban-filter-container {
+  margin: 10px 0px;
+  padding: 0px;
+}
+#kanban .dropdown-menu {
+  width: 320px !important;
+  max-width: 320px !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+#kanban [data-visible='visible'] {
+  display: block;
+}

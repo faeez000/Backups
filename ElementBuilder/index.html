@@ -1,0 +1,1106 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Element Builder</title>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <link rel="icon" type="image/x-icon" href="/static/element-builder/public/asset/logo.ico">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="static/element-builder/public/styles/snackbar.min.css" />
+    <link rel="stylesheet" href="static/element-builder/public/styles/dragula.min.css" />
+    <link rel="stylesheet" href="static/element-builder/public/styles/index.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body style="display: none">
+
+    <!-- New Shortcut Navbar-->
+    <nav class="navbar navbar-light fixed-top border-bottom px-5 py-0" style="height: 3rem;">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="/features" style="width: 90px;">
+                <img src="https://cleverlywork.com/wp-content/uploads/2021/02/14cw.svg"
+                    style="width: 100%; min-width: 50px; object-fit: contain;" />
+            </a>
+
+            <div class="">
+                <ul class="list-unstyled nav-links d-flex align-items-center mb-2 mb-lg-0">
+                    <li class="nav-item mr-2">
+                        <a class=" border d-flex align-items-center" aria-current="page"
+                            style="color: black;  font-weight: 700;padding: 5px; text-decoration: none;"
+                            href="/organizations"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"
+                                width="16" data-view-component="true" class="octicon octicon-organization">
+                                <path fill-rule="evenodd"
+                                    d="M1.5 14.25c0 .138.112.25.25.25H4v-1.25a.75.75 0 01.75-.75h2.5a.75.75 0 01.75.75v1.25h2.25a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25h-8.5a.25.25 0 00-.25.25v12.5zM1.75 16A1.75 1.75 0 010 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 00.25-.25V8.285a.25.25 0 00-.111-.208l-1.055-.703a.75.75 0 11.832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0114.25 16h-3.5a.75.75 0 01-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 01-.75-.75V14h-1v1.25a.75.75 0 01-.75.75h-3zM3 3.75A.75.75 0 013.75 3h.5a.75.75 0 010 1.5h-.5A.75.75 0 013 3.75zM3.75 6a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM3 9.75A.75.75 0 013.75 9h.5a.75.75 0 010 1.5h-.5A.75.75 0 013 9.75zM7.75 9a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM7 6.75A.75.75 0 017.75 6h.5a.75.75 0 010 1.5h-.5A.75.75 0 017 6.75zM7.75 3a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5z">
+                                </path>
+                            </svg><span class="px-1" id="current-organization-name"
+                                style="font-size: .89rem;"></span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle black" href="#" id="featureDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg style="width:30px;height:30px" viewBox="0 0 24 24">
+                                <path fill="black"
+                                    d="M12 16C13.1 16 14 16.9 14 18S13.1 20 12 20 10 19.1 10 18 10.9 16 12 16M12 10C13.1 10 14 10.9 14 12S13.1 14 12 14 10 13.1 10 12 10.9 10 12 10M12 4C13.1 4 14 4.9 14 6S13.1 8 12 8 10 7.1 10 6 10.9 4 12 4M6 16C7.1 16 8 16.9 8 18S7.1 20 6 20 4 19.1 4 18 4.9 16 6 16M6 10C7.1 10 8 10.9 8 12S7.1 14 6 14 4 13.1 4 12 4.9 10 6 10M6 4C7.1 4 8 4.9 8 6S7.1 8 6 8 4 7.1 4 6 4.9 4 6 4M18 16C19.1 16 20 16.9 20 18S19.1 20 18 20 16 19.1 16 18 16.9 16 18 16M18 10C19.1 10 20 10.9 20 12S19.1 14 18 14 16 13.1 16 12 16.9 10 18 10M18 4C19.1 4 20 4.9 20 6S19.1 8 18 8 16 7.1 16 6 16.9 4 18 4Z" />
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right px-3 pt-3 navbarFeatureComponents"
+                            aria-labelledby="featureDropdown">
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            <img style="width: 2.2rem; height:2.2rem; border-radius: 100%;"
+                                src="https://t4.ftcdn.net/jpg/00/97/00/09/240_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg"
+                                id="profileImage" alt="">
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-right " aria-labelledby="profileDropdown"
+                            style="font-size: 14px;">
+                            <ul class="navigationProfileMenu list-unstyled p-0">
+
+                            </ul>
+                            <li><a class="dropdown-item  border-top" id="signOut" href="">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+
+
+    <!-- Static navbar -->
+    <div class="container-fluid p-0 mt-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top flex-row-between-center">
+            <div class="form-details-container flex-row-center-center">
+                <div class="flex-row-start-center">
+                    <div class="p-0 w-100 ml-1 flex-row-start-center">
+                        <div class="row-flex-row-center-center">
+                            <b id="form-name" title="Form Name">...</b><br />
+                            <span class="m-0 p-0">
+                                <small class="m-0" style="font-size: 14px !important" id="form-type"
+                                    title="Form Type">...</small></span>
+                        </div>
+                        <div class="icon flex-row-center-center ml-4" title="Select Section" data-toggle="modal"
+                            data-target="#layout-modal">
+                            <!-- Example single danger button -->
+                            <div class="btn-group">
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    View
+                                </a>
+                                <div class="dropdown-menu" style="border-radius: 0px !important">
+                                    <a class="dropdown-item p-2 pt-0 pb-0" href="#">
+                                        <div class="text flex-row-between-center" id="selected-section">
+                                            <span>Layout</span>
+                                            <small>
+                                                <span>(</span>
+                                                <span id="current-layout"></span>
+                                                <span>)</span>
+                                            </small>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row-center-center mr-3"></div>
+            <small class="mr-3 text-primary" id="go_to_report_link" role="button" style="cursor: pointer">Go To Report
+                Form
+            </small>
+        </nav>
+        <div class="app p-0 m-0">
+            <div class="row p-0 m-0">
+                <section class="section element-section col-lg-2 col-md-2 col-sm-12 p-0 m-0">
+                    <div class="col-12 section-container p-0">
+                        <div class="w-100 header">
+                            <p class="m-0 p-2">Basic Elements</p>
+                        </div>
+                        <div class="element-container p-2"></div>
+                    </div>
+                </section>
+                <section class="section main-section col-lg-10 col-md-10 col-sm-12 col-12 p-2 m-0">
+                    <div class="col-lg-6 col-md-6 col-12 main-container p-4"></div>
+                </section>
+            </div>
+        </div>
+        <!-- properties modal -->
+        <div class="modal fade propteries-modal" id="properties-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="
+                        min-height: 100vh;
+                        height: 100%;
+                        margin: 0px !important;
+                        float: right;
+                        width: 50%;
+                        min-width: 360px;
+                    ">
+                <div class="modal-content flex-column-between-center" style="
+                            height: 100% !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 0px !important;
+                            border-radius: 0px !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Properties
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="properties-form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(100% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="w-100 hint-container"></div>
+                            <div class="w-100 property-field-container"></div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-element-properties-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- autofetch table and column modal -->
+        <div class="modal fade" id="autofetch-details" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Autofetch Details
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="autofetch-detail-form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="table">
+                                        <small>from</small><br />
+                                        <small><b>Table</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="table" class="custom-select" name="tableName"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="column"><small>select</small><br />
+                                        <small><b>Column</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="column" class="custom-select" name="columnName"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="where-column"><small>where</small><br />
+                                        <small><b>Column</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="where-column" class="custom-select" name="whereColumnName"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="primary-element">
+                                        <small>value</small><br />
+                                        <small><b>Primary Element</b></small>
+                                    </label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="primary-element" class="custom-select" name="primaryElementId"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-autofetch-detail-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reference Data table and column modal -->
+        <div class="modal fade" id="data-Reference-details" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Data Reference
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="data-Reference-detail-form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="reference-Table">
+                                        <small>from</small><br />
+                                        <small><b>Table</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="reference-Table" class="custom-select" name="tableColumn"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="title-Column"><small>select</small><br />
+                                        <small><b>Title Column</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="title-Column" class="custom-select" name="titleColumn"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="subtitle-Column"><small>select</small><br />
+                                        <small><b>Subtitle Column</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="subtitle-Column" class="custom-select" name="subtitle"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="image-Column">
+                                        <small>select</small><br />
+                                        <small><b>Image Column</b></small>
+                                    </label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="image-Column" class="custom-select" name="imageColumn"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Data-Reference-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Reference Data table and column modal -->
+        <div class="modal fade" id="card-Data-Reference-details" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                         margin: 0px !important;
+                         padding: 0px !important;
+                         float: right;
+                         border: 1px solid var(--table-border) !important;
+                     ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Card Data Reference
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="card-Data-Reference-detail-form" class="m-0 p-0 flex-column-between-center" style="
+                             height: calc(50% - 50px);
+                             width: 100% !important;
+                         ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="card-Reference-Table">
+                                        <small>from</small><br />
+                                        <small><b>Table</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="card-Reference-Table" class="custom-select" name="tableColumn"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="card-Title-Column"><small>select</small><br />
+                                        <small><b>Title Column</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="card-Title-Column" class="custom-select" name="titleColumn"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="card-Subtitle-Column"><small>select</small><br />
+                                        <small><b>Subtitle Column</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="card-Subtitle-Column" class="custom-select" name="subtitle"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="card-Image-Column">
+                                        <small>select</small><br />
+                                        <small><b>Image Column</b></small>
+                                    </label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="card-Image-Column" class="custom-select" name="imageColumn"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="card-Description-Column">
+                                        <small>select</small><br />
+                                        <small><b>Description Column</b></small>
+                                    </label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="card-Description-Column" class="custom-select"
+                                        name="descriptionColumn"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Card-Data-Reference-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Modal On Redirect Form Option Select  -->
+        <div class="modal fade" id="redirect-To-Form-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Redirect To Form
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="redirect-To-Form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="redirect-To-Form-list"><small><b>Form</b></small></label>
+                                </div>
+                                <div class="right">
+                                    <select id="redirect-To-Form-list" class="custom-select"
+                                        name="redirectToForm"></select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Redirect-To-Form-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instance Behaviour Modal  -->
+        <div class="modal fade" id="instance-Behaviour-Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Instance Behaviour
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="instance-Behaviour-Form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="instance-Behaviour-Dropdown"><small><b>Instance
+                                                Behaviour</b></small></label>
+                                </div>
+                                <div class="right">
+                                    <select id="instance-Behaviour-Dropdown" class="custom-select"
+                                        name="instanceBehaviour">
+                                        <option value="EDIT_AND_CONTINUE">EDIT_AND_CONTINUE</option>
+                                        <option value="EDIT_AND_FOLLOW">EDIT_AND_FOLLOW</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Instance-Behaviour-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Modal On Redirect Url Option Select  -->
+        <div class="modal fade" id="redirect-To-Url-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                        margin: 0px !important;
+                        padding: 0px !important;
+                        float: right;
+                        border: 1px solid var(--table-border) !important;
+                    ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Redirect To Url
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="redirect-To-Url-Form" class="m-0 p-0 flex-column-between-center" style="
+                            height: calc(50% - 50px);
+                            width: 100% !important;
+                        ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="redirect-To-Url"><small><b>URL</b></small></label>
+                                </div>
+                                <div class="right">
+                                    <textarea id="redirect-To-Url" class="form-control" name="redirectToUrl" rows="4"
+                                        placeholder="Enter your URL"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Redirect-To-Url-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type JSON Option Select Modal  -->
+        <div class="modal fade" id="type-Json-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                         margin: 0px !important;
+                         padding: 0px !important;
+                         float: right;
+                         border: 1px solid var(--table-border) !important;
+                     ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            From JSON
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="type-Json-Form" class="m-0 p-0 flex-column-between-center" style="
+                             height: calc(50% - 50px);
+                             width: 100% !important;
+                         ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="type-Json"><small><b>From Json</b></small></label>
+                                </div>
+                                <div class="right">
+                                    <textarea id="type-Json" class="form-control" name="json" rows="4"
+                                        placeholder="Enter your JSON"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-type-Json-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chip And Avtar Reference Data table and column modal -->
+        <div class="modal fade" id="chip-Avtar-Data-Reference-details" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                     margin: 0px !important;
+                     padding: 0px !important;
+                     float: right;
+                     border: 1px solid var(--table-border) !important;
+                 ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Data Reference
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="avtar-Data-Reference-detail-form" class="m-0 p-0 flex-column-between-center" style="
+                         height: calc(50% - 50px);
+                         width: 100% !important;
+                     ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="avtar-Reference-Table">
+                                        <small>from</small><br />
+                                        <small><b>Table</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="avtar-Reference-Table" class="custom-select"
+                                        name="tableColumn"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="avtar-Title-Column"><small>select</small><br />
+                                        <small><b>Title Column</b></small></label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="avtar-Title-Column" class="custom-select" name="titleColumn"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="avtar-Image-Column">
+                                        <small>select</small><br />
+                                        <small><b>Image Column</b></small>
+                                    </label>
+                                </div>
+                                <div class="right d-flex align-items-end">
+                                    <select id="avtar-Image-Column" class="custom-select" name="imageColumn"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-avtar-Data-Reference-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icon Action Modal On Load Fragment Option Select  -->
+        <div class="modal fade" id="load-Fragment-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                      margin: 0px !important;
+                      padding: 0px !important;
+                      float: right;
+                      border: 1px solid var(--table-border) !important;
+                  ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Load Fragment
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="load-Fragment-Form" class="m-0 p-0 flex-column-between-center" style="
+                          height: calc(50% - 50px);
+                          width: 100% !important;
+                      ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="load-Fragment-list"><small><b>Form</b></small></label>
+                                </div>
+                                <div class="right">
+                                    <select id="load-Fragment-list" class="custom-select" name="loadFragment"></select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Load-Fragment-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icon Action Modal Of Icon Action Option Select  -->
+        <div class="modal fade" id="icon-Action-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                   margin: 0px !important;
+                   padding: 0px !important;
+                   float: right;
+                   border: 1px solid var(--table-border) !important;
+               ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Redirect To Form
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="icon-Action-Form" class="m-0 p-0 flex-column-between-center" style="
+                       height: calc(50% - 50px);
+                       width: 100% !important;
+                   ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="icon-Action-list"><small><b>Form</b></small></label>
+                                </div>
+                                <div class="right">
+                                    <select id="icon-Action-list" class="custom-select"
+                                        name="iconRedirectedForm"></select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Icon-Action-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Redirection Modal On Redirect to CW Option Select  -->
+        <div class="modal fade" id="redirect-To-CW-Action-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                    margin: 0px !important;
+                    padding: 0px !important;
+                    float: right;
+                    border: 1px solid var(--table-border) !important;
+                ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Redirection To
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="redirect-To-CleverlyWork-Form" class="m-0 p-0 flex-column-between-center" style="
+                        height: calc(50% - 50px);
+                        width: 100% !important;
+                    ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="redirection-Type-list"><small><b>Redirect Type</b></small></label>
+                                </div>
+                                <div class="right">
+                                    <select id="redirection-Type-list" class="custom-select" name="redirectType">
+                                        <option value="Form">Form</option>
+                                        <option value="Ledger">Ledger</option>
+                                        <option value="Url">URL</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="redirection-To-Value-list"><small><b>Redirect Value</b></small></label>
+                                </div>
+                                <div class="right" id="ActionValueRightSide">
+                                    <select id="redirection-To-Value-list" class="custom-select"
+                                        name="redirectValue"></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="redirection-To-Value-url"><small><b>Redirect Url
+                                                Value</b></small></label>
+                                </div>
+                                <div class="right" id="ActionValueRightSide">
+
+                                    <textarea id="redirection-To-Value-TextArea" class="form-control"
+                                        name="redirectValue"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-Redirection-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- option reference modal -->
+        <div class="modal fade" id="option-reference-details-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Reference
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="option-reference-details-form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="option-table">Table</label>
+                                </div>
+                                <div class="right">
+                                    <select id="option-table" class="custom-select" name="tableName"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="option-column">Column</label>
+                                </div>
+                                <div class="right">
+                                    <select id="option-column" class="custom-select" name="columnName"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-reference-option-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- option Conditional Modal -->
+        <div class="modal fade" id="Conditional-reference-details-modal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Conditional Options Reference
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="Conditional-reference-details-form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="query-value">Query</label>
+                                </div>
+                                <div class="right">
+                                    <textarea id="query-value" class="form-control" name="query" rows="4"
+                                        placeholder="write query here"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-conditional-option-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- option custom modal -->
+        <div class="modal fade" id="option-custom-details-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Custom
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="option-custom-details-form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left flex-row-start-start">
+                                    <label for="option-value">Options</label>
+                                </div>
+                                <div class="right flex-column-start-center">
+                                    <textarea id="option-value" class="form-control" name="value" rows="4"
+                                        placeholder="Enter your Choices"></textarea>
+                                    <small style="color: rgb(66, 66, 66)">choices should be seperated with
+                                        comma example: choice 1,choice
+                                        2</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-custom-option-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- auto suggestion modal -->
+        <div class="modal fade" id="auto-suggestion-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="z-index: 1200 !important">
+            <div class="modal-dialog" style="width: 50%; min-width: 360px">
+                <div class="modal-content flex-column-between-center" style="
+                            margin: 0px !important;
+                            padding: 0px !important;
+                            float: right;
+                            border: 1px solid var(--table-border) !important;
+                        ">
+                    <div class="modal-header" style="height: 40px; width: 100% !important">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Auto Suggestion
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="auto-suggestion-form" class="m-0 p-0 flex-column-between-center" style="
+                                height: calc(50% - 50px);
+                                width: 100% !important;
+                            ">
+                        <div class="modal-body w-100 p-4">
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="auto-suggestion-table">Table</label>
+                                </div>
+                                <div class="right">
+                                    <select id="auto-suggestion-table" class="custom-select" name="tableName"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="left">
+                                    <label for="auto-suggestion-column">Column</label>
+                                </div>
+                                <div class="right">
+                                    <select id="auto-suggestion-column" class="custom-select"
+                                        name="columnName"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer w-100 flex-row-end-center">
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-success" id="save-auto-suggestion-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete element confirmation -->
+    <div class="modal fade show" id="delete-element-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-modal="true">
+        <div class="modal-dialog" role="document" style="width: 320px">
+            <div class="modal-content" style="background-clip: unset !important">
+                <form id="delete-element-form" class="m-0">
+                    <div class="modal-body p-2" style="border-radius: 0.3rem !important">
+                        <span id="delete-element-message"><b>Are You Sure?</b></span>
+                    </div>
+                    <div class="modal-footer p-0">
+                        <button type="button" class="btn btn-light btn-sm btn-custom-sm" data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-danger btn-sm btn-custom-sm" id="delete-element-btn">
+                            Delete
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout Modal -->
+    <div class="modal fade p-0" id="layout-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header p-1 flex-row-between-center" style="border: none !important">
+                    <span><b>Select Layout Section</b></span>
+                    <button type="button" class="close p-3" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-3" id="layout-modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="static/element-builder/public/scripts/snackbar.min.js"></script>
+    <script src="static/element-builder/public/scripts/uuid.min.js"></script>
+    <script src="static/element-builder/public/scripts/dragula.min.js"></script>
+    <script src="static/element-builder/src/main.js" type="module"></script>
+</body>
+
+</html>

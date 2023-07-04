@@ -1,0 +1,32 @@
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border: 1px solid #f8f8f8;
+    background: rgb(223, 221, 221);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(173, 172, 172);
+}
+
+/* .taskcard:active { */
+/* cursor: grabbing; */
+/* cursor: -moz-grabbing; */
+/* cursor: -webkit-grabbing; */
+/* color: red; */
+/* background: yellow; */
+
+/* } */

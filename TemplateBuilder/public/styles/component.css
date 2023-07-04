@@ -1,0 +1,57 @@
+.custom-sm {
+    height: calc(2rem + 1px) !important;
+    font-size: 0.875rem !important;
+    padding: 0.25rem 0.5rem !important;
+}
+.btn-custom-sm {
+    min-width: 70px;
+}
+.custom-select {
+    padding: 0.19rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    min-width: 80px !important;
+}
+.btn-link {
+    text-decoration: none !important;
+    color: var(--text-color);
+}
+.btn-custom-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+.form-control {
+    padding: 0.22rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5;
+}
+.btn-custom-select {
+    border-radius: 4px !important;
+    padding: 0.39rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5px;
+    outline: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.modal-header,
+.modal-footer {
+    padding: 0.5rem 1rem;
+}
+.close {
+    outline: none !important;
+}
+.btn-custom {
+    background-color: #fafafa;
+    outline: none;
+    border: 1px solid gray !important;
+}
+
+.btn-custom:hover {
+    border: 1px solid skyblue !important;
+}
+.sub-container {
+    width: 100% !important;
+    max-width: 70%;
+    min-width: 300px !important;
+}
